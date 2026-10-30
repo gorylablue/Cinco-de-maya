@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cinco de Maya · Cocina mexicana y cantina</title>
+<meta name="description" content="Cinco de Maya: cocina mexicana y cantina en Mayagüez, Aguadilla y Ponce. Horarios, teléfonos y cómo llegar a cada local.">
+<meta name="theme-color" content="#140C11">
+<meta property="og:title" content="Cinco de Maya · Cocina mexicana y cantina">
+<meta property="og:description" content="Mayagüez, Aguadilla y Ponce. Guaynabo, muy pronto.">
+<meta property="og:image" content="img/fajitas.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@1&family=DM+Sans:opsz,wght@9..40,400..800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/fajitas.webp">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Restaurant","name":"Cinco de Maya Mayagüez","servesCuisine":"Mexicana","telephone":"+1-787-978-3007","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"75-81 Calle de la Candelaria","addressLocality":"Mayagüez","postalCode":"00680","addressRegion":"PR","addressCountry":"US"},"openingHours":"Mo-Su 11:30-21:30","sameAs":["https://www.instagram.com/cincodemayapuertorico/","https://www.facebook.com/cincodemayapuertorico/"]},
+{"@type":"Restaurant","name":"Cinco de Maya Aguadilla","servesCuisine":"Mexicana","telephone":"+1-787-658-0033","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"Aguadilla Town Center, PR-2","addressLocality":"Aguadilla","postalCode":"00603","addressRegion":"PR","addressCountry":"US"},"openingHours":"Mo-Su 11:30-21:30"},
+{"@type":"Restaurant","name":"Cinco de Maya Ponce","servesCuisine":"Mexicana","telephone":"+1-787-973-5352","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"113 Av. Tito Castro","addressLocality":"Ponce","postalCode":"00716","addressRegion":"PR","addressCountry":"US"},"openingHours":"We-Su 11:30-21:30"}
+]}
+</script>
+<style>
+/* ============ Tokens ============ */
+:root{
+  --noche:#140C11; --noche-2:#20141B; --rosa:#FF3D8B; --rosa-suave:#FFD3E5;
+  --amarillo:#FFD21F; --azul:#1F4FC4; --azul-hondo:#0E2A73; --turquesa:#17B5C2;
+  --rojo:#E5322B; --crema:#FFF4E4; --papel:#F6E8D2; --lila:#B7A3E6; --tinta:#1A1216;
+  --verde:#1E9E55;
+  --f-poster:"Anton","Futura-CondensedExtraBold","Avenir Next Condensed","Impact","Arial Narrow",sans-serif;
+  --f-script:"Instrument Serif",Georgia,serif;
+  --f-body:"DM Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --gut:clamp(16px,4vw,56px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --spring:cubic-bezier(.3,1.5,.5,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:104px}
+body{margin:0;background:var(--noche);color:var(--crema);font-family:var(--f-body);font-size:17px;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--amarillo);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.poster{font-family:var(--f-poster);font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.9}
+.script{font-family:var(--f-script);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+.eti{font-family:var(--f-body);font-weight:800;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+
+/* Talavera (motivo propio, en SVG) */
+.talavera{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='2'%3E%3Ccircle cx='48' cy='48' r='9'/%3E%3Cpath d='M48 18c7 9 7 15 0 21c-7-6-7-12 0-21zM48 78c7-9 7-15 0-21c-7 6-7 12 0 21zM18 48c9-7 15-7 21 0c-6 7-12 7-21 0zM78 48c-9-7-15-7-21 0c6 7 12 7 21 0z'/%3E%3Cpath d='M0 14a14 14 0 0 0 14-14M82 0a14 14 0 0 0 14 14M96 82a14 14 0 0 0-14 14M14 96a14 14 0 0 0-14-14'/%3E%3Ccircle cx='27' cy='27' r='2.5'/%3E%3Ccircle cx='69' cy='27' r='2.5'/%3E%3Ccircle cx='27' cy='69' r='2.5'/%3E%3Ccircle cx='69' cy='69' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:96px 96px;
+}
+
+/* ============ Franja de prototipo ============ */
+.proto{position:fixed;left:0;right:0;top:0;height:32px;line-height:18px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;z-index:30;background:var(--amarillo);color:var(--tinta);text-align:center;padding:7px var(--gut);font-size:12.5px;font-weight:700;letter-spacing:.04em}
+.proto b{font-weight:800}
+
+/* ============ Cabecera ============ */
+.cab{position:fixed;left:0;right:0;top:32px;z-index:20;display:flex;align-items:center;gap:12px;padding:12px var(--gut);
+  transition:transform .5s var(--ease),background .4s,box-shadow .4s}
+.cab.solida{background:rgba(20,12,17,.86);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.cab.oculta{transform:translateY(calc(-100% - 40px))}
+.cab .marca{display:flex;align-items:baseline;gap:.18em;text-decoration:none;font-size:26px;color:var(--rosa)}
+.cab .marca .script{font-size:.8em;color:var(--amarillo)}
+.cab .esp{flex:1}
+.cab a.lnk{font-weight:700;font-size:15px;text-decoration:none;padding:10px 12px;border-radius:999px;transition:background .25s}
+.cab a.lnk:hover{background:rgba(255,255,255,.08)}
+.pildora{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px 8px 12px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--rosa);color:var(--tinta);font-weight:800;font-size:15px;box-shadow:0 4px 0 #9C1650;transition:transform .2s var(--ease),box-shadow .2s}
+.pildora:hover{transform:translateY(-1px)}
+.pildora:active{transform:translateY(3px);box-shadow:0 1px 0 #9C1650}
+.pildora .pt{width:10px;height:10px;border-radius:50%;background:var(--tinta);flex:none}
+.pildora .pt.ab{background:var(--verde);box-shadow:0 0 0 3px rgba(255,255,255,.55)}
+@media (max-width:720px){.cab a.lnk{display:none}.cab .marca{font-size:22px}}
+
+/* ============ Portada ============ */
+.hero{position:relative;min-height:max(640px,100svh);display:grid;place-items:center;overflow:hidden;isolation:isolate;
+  background:radial-gradient(120% 80% at 50% 55%,#3A1027 0%,var(--noche) 62%)}
+.hero .talavera{position:absolute;inset:-10%;opacity:.05;z-index:-2}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(transparent,var(--noche));z-index:-1;pointer-events:none}
+.foto{position:absolute;z-index:-1;width:clamp(140px,15.5vw,260px);border-radius:14px;overflow:hidden;background:#2a1a22;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 6px var(--crema);will-change:transform}
+.foto img{width:100%;aspect-ratio:460/548;object-fit:cover}
+.foto.f1{left:4vw;top:16%;--r:-8deg}
+.foto.f2{right:4.5vw;top:13%;--r:7deg}
+.foto.f3{left:7vw;bottom:12%;--r:6deg}
+.foto.f4{right:6vw;bottom:15%;--r:-5deg}
+.foto{transform:translate3d(0,var(--py,0px),0) rotate(var(--r));opacity:0;animation:entra 1.1s var(--ease) forwards}
+.foto.f1{animation-delay:.9s}.foto.f2{animation-delay:1.05s}.foto.f3{animation-delay:1.2s}.foto.f4{animation-delay:1.35s}
+@keyframes entra{from{opacity:0;translate:0 40px;scale:.92}to{opacity:1;translate:0 0;scale:1}}
+
+.hero-c{position:relative;text-align:center;padding:120px var(--gut) 150px;max-width:1200px}
+.neon{margin:0;font-size:clamp(84px,17vw,250px);display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;column-gap:.12em;line-height:.86}
+.neon .w{color:#FFE6F1;text-shadow:0 0 .015em #fff,0 0 .06em var(--rosa),0 0 .16em var(--rosa),0 0 .4em rgba(255,61,139,.55)}
+.neon .de{font-size:.62em;color:#FFF3B8;text-shadow:0 0 .03em #fff,0 0 .12em var(--amarillo),0 0 .3em rgba(255,210,31,.55);transform:translateY(-.08em);display:inline-block}
+.neon .w,.neon .de{opacity:0}
+.cargado .neon .w{animation:prende 1.1s steps(1) forwards}
+.cargado .neon .de{animation:prende 1s .5s steps(1) forwards}
+.cargado .neon .w.b{animation-delay:.25s}
+@keyframes prende{0%{opacity:0}8%{opacity:1}12%{opacity:.15}20%{opacity:1}26%{opacity:.3}34%{opacity:1}100%{opacity:1}}
+.hero .sub{text-shadow:0 2px 12px rgba(20,12,17,.9),0 0 2px rgba(20,12,17,.8);margin:28px auto 0;max-width:30em;font-size:clamp(17px,1.6vw,21px);color:#F3D9E5;opacity:0;transform:translateY(12px);transition:opacity .8s 1.2s,transform .8s 1.2s var(--ease)}
+.hero .sub b{color:#fff}
+.hero .acciones{margin-top:30px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;opacity:0;transform:translateY(12px);transition:opacity .8s 1.35s,transform .8s 1.35s var(--ease)}
+.cargado .hero .sub,.cargado .hero .acciones{opacity:1;transform:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:14px 26px;border-radius:999px;border:0;cursor:pointer;
+  font-weight:800;font-size:17px;text-decoration:none;transition:transform .2s var(--ease),box-shadow .2s,background .25s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.rosa{background:var(--rosa);color:var(--tinta);box-shadow:0 5px 0 #9C1650}
+.btn.amarillo{background:var(--amarillo);color:var(--tinta);box-shadow:0 5px 0 #A68400}
+.btn.crema{background:var(--crema);color:var(--tinta);box-shadow:0 5px 0 #B8A88E}
+.btn.oscuro{background:var(--tinta);color:var(--crema);box-shadow:0 5px 0 #000}
+.btn.linea{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.5)}
+.btn.linea:active{box-shadow:inset 0 0 0 2px currentColor}
+
+/* Cinta que corre */
+.cinta{position:absolute;left:0;right:0;bottom:0;z-index:2;background:var(--rosa);color:var(--tinta);overflow:hidden;transform:rotate(-1.4deg) translateY(-34px) scale(1.04);box-shadow:0 8px 0 rgba(0,0,0,.25)}
+.cinta .pista{display:flex;width:max-content;animation:corre 38s linear infinite}
+.cinta span{font-family:var(--f-poster);font-size:clamp(22px,2.4vw,32px);text-transform:uppercase;padding:10px 0;white-space:nowrap}
+.cinta i{display:inline-block;width:.5em;height:.5em;margin:0 .7em;background:var(--tinta);transform:rotate(45deg) translateY(-.1em)}
+.cinta.pausa .pista{animation-play-state:paused}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+@media (max-width:720px){
+  .neon{flex-direction:column;align-items:center;font-size:clamp(92px,30vw,150px);row-gap:0}
+  .neon .de{font-size:.5em;margin:-.02em 0 .04em}
+  .hero-c{padding:110px var(--gut) 130px}
+  .foto{width:clamp(108px,32vw,160px);box-shadow:0 20px 40px -14px rgba(0,0,0,.85),0 0 0 4px var(--crema)}
+  .foto.f1{left:-6vw;top:13%}
+  .foto.f2{right:-7vw;top:9%}
+  .foto.f3{left:-9vw;bottom:5%}
+  .foto.f4{right:-8vw;bottom:6%}
+  .hero .acciones .btn{flex:1 1 100%;max-width:340px}
+}
+
+/* ============ Secciones genéricas ============ */
+section{position:relative}
+.sec-cab{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+.titulo{margin:10px 0 0;font-size:clamp(56px,9vw,128px)}
+.titulo .script{font-size:.66em;color:var(--rosa)}
+.bajada{margin:16px 0 0;max-width:34em;font-size:clamp(17px,1.5vw,20px);opacity:.9}
+.rev{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rev.in{opacity:1;transform:none}
+
+/* ============ Elige tu esquina (ring) ============ */
+.locales{background:var(--turquesa);color:var(--tinta);padding:clamp(80px,10vw,140px) 0 clamp(80px,10vw,130px);overflow:hidden}
+.locales .talavera{position:absolute;inset:0;opacity:.13;pointer-events:none}
+.locales .titulo .script{color:var(--crema)}
+.arena{max-width:1240px;margin:clamp(36px,5vw,64px) auto 0;padding:0 var(--gut);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.ring{position:relative;width:100%;max-width:560px;aspect-ratio:1;margin:0 auto;user-select:none;-webkit-user-select:none}
+.ring svg.lona{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cuerda{transform-box:fill-box;transform-origin:center}
+.ring.g-ag .c-arr,.ring.g-ag .c-izq,.ring.g-gy .c-arr,.ring.g-gy .c-der,.ring.g-my .c-aba,.ring.g-my .c-izq,.ring.g-po .c-aba,.ring.g-po .c-der{animation:vibra .7s var(--ease)}
+@keyframes vibra{15%{transform:scale(1.035)}35%{transform:scale(.985)}55%{transform:scale(1.015)}75%{transform:scale(.996)}}
+.centro{position:absolute;left:50%;top:50%;width:52%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+.centro svg{width:40%;margin:0 auto;display:block;transition:transform .6s var(--spring)}
+.centro .nom{margin-top:6px;font-size:clamp(26px,3.4vw,42px);color:var(--tinta)}
+.centro .ind{font-weight:700;font-size:14px;opacity:.75}
+.ring.golpe .centro svg{animation:salta .6s var(--spring)}
+@keyframes salta{40%{transform:scale(1.18) rotate(-6deg)}}
+.esq{position:absolute;width:30%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  border:0;background:none;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent}
+.esq.ag{left:-4%;top:-4%}.esq.gy{right:-4%;top:-4%}.esq.my{left:-4%;bottom:-4%}.esq.po{right:-4%;bottom:-4%}
+.esq .poste{width:44%;aspect-ratio:1;border-radius:50%;background:var(--c);box-shadow:0 0 0 5px var(--tinta),0 8px 0 5px rgba(0,0,0,.25);
+  display:grid;place-items:center;transition:transform .35s var(--spring),box-shadow .3s}
+.esq .poste::after{content:"";width:34%;aspect-ratio:1;border-radius:50%;background:rgba(0,0,0,.25)}
+.esq .rot{font-family:var(--f-poster);text-transform:uppercase;font-size:clamp(17px,2vw,24px);line-height:1;background:var(--tinta);color:var(--crema);padding:6px 10px 5px;border-radius:6px;white-space:nowrap}
+.esq .rot small{display:block;font-family:var(--f-body);font-weight:800;font-size:10px;letter-spacing:.18em;margin-top:3px;color:var(--amarillo)}
+.esq:hover .poste{transform:scale(1.08)}
+.esq[aria-pressed="true"] .poste{transform:scale(1.14);box-shadow:0 0 0 5px var(--tinta),0 0 0 11px var(--crema),0 10px 0 9px rgba(0,0,0,.25)}
+.esq[aria-pressed="true"] .rot{background:var(--crema);color:var(--tinta)}
+.esq.ag .rot,.esq.gy .rot{order:-1}
+.esq.ag{--c:var(--amarillo)}.esq.gy{--c:#9AA0A6}.esq.my{--c:var(--rosa)}.esq.po{--c:var(--rojo)}
+.esq.gy .poste{background:repeating-linear-gradient(45deg,#C9CDD1 0 6px,#9AA0A6 6px 12px)}
+
+.ficha{position:relative;background:var(--crema);border-radius:28px;padding:clamp(24px,3vw,40px);box-shadow:0 10px 0 var(--tinta);min-height:420px;display:flex;flex-direction:column}
+.ficha .vacia{margin:auto 0;text-align:center}
+.ficha .vacia .poster{font-size:clamp(40px,4.4vw,58px)}
+.ficha .vacia p{margin:12px auto 0;max-width:24em}
+.ficha h3{margin:6px 0 0;font-size:clamp(54px,6.4vw,88px)}
+.estado{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding:8px 14px;border-radius:999px;font-weight:800;font-size:15px;background:#F1E2CB}
+.estado i{width:10px;height:10px;border-radius:50%;background:#9A8E80;flex:none}
+.estado.ab{background:#D9F4E3;color:#0B5A2E}.estado.ab i{background:var(--verde);box-shadow:0 0 0 4px rgba(30,158,85,.2);animation:late 1.8s ease-in-out infinite}
+.estado.ce{background:#FBE0DD;color:#8A1E17}.estado.ce i{background:var(--rojo)}
+@keyframes late{50%{box-shadow:0 0 0 8px rgba(30,158,85,0)}}
+.dir{margin:16px 0 0;font-size:18px;font-weight:600}
+.horas{margin:14px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;font-size:15.5px}
+.horas li{display:contents}
+.horas .hoy{font-weight:800}
+.horas .hoy span:first-child::after{content:" · hoy";color:var(--rosa)}
+.ficha .botones{margin-top:auto;padding-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.ficha .botones .btn{white-space:nowrap}
+.horas span:last-child{white-space:nowrap}
+.ficha .botones .btn{min-height:58px;padding:12px 16px;font-size:16px}
+.ficha .tel{font-variant-numeric:tabular-nums}
+.ficha .anim{animation:aparece .55s var(--ease)}
+@keyframes aparece{from{opacity:0;transform:translateY(14px)}}
+@media (max-width:900px){
+  .arena{grid-template-columns:1fr}
+  .ring{max-width:430px}
+  .ficha{min-height:0}
+}
+@media (max-width:420px){
+  .esq{width:33%}
+  .esq.ag{left:-6%;top:-5%}.esq.gy{right:-6%;top:-5%}.esq.my{left:-6%;bottom:-5%}.esq.po{right:-6%;bottom:-5%}
+  .esq .rot{font-size:15px;padding:5px 8px 4px}
+  .centro .nom{font-size:24px}
+}
+
+/* ============ Cartelera ============ */
+.cartelera{background:var(--noche);padding:clamp(90px,11vw,150px) 0 clamp(70px,8vw,110px)}
+.cartelera .titulo .script{color:var(--amarillo)}
+.carteles{max-width:1240px;margin:clamp(36px,5vw,64px) auto 0;padding:0 var(--gut);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+.cartel{position:relative;grid-column:span 4;border-radius:22px;overflow:hidden;background:var(--bg);color:var(--fg,var(--tinta));
+  transform:rotate(var(--r,0deg));transition:transform .5s var(--spring),box-shadow .4s;box-shadow:0 8px 0 rgba(0,0,0,.35)}
+.cartel:hover{transform:rotate(0deg) translateY(-6px) scale(1.015)}
+.cartel .marco{margin:12px;border-radius:14px;overflow:hidden;aspect-ratio:4/4.4;background:#0003}
+.cartel .marco img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.cartel:hover .marco img{transform:scale(1.05)}
+.cartel .txt{padding:6px 20px 22px}
+.cartel .eti{opacity:.75}
+.cartel h3{margin:6px 0 0;font-size:clamp(34px,3.4vw,48px)}
+.cartel p{margin:8px 0 0;font-size:15.5px;line-height:1.4}
+.cartel .precio{position:absolute;top:22px;right:22px;background:var(--tinta);color:var(--amarillo);font-family:var(--f-poster);font-size:24px;padding:6px 12px;border-radius:10px;transform:rotate(4deg)}
+.cartel.ancho{grid-column:span 8}
+.cartel.ancho .marco{aspect-ratio:16/9.6}
+.cartel.letra{display:flex;flex-direction:column;justify-content:space-between;min-height:100%}
+.cartel.letra .grande{padding:26px 22px 0;font-size:clamp(46px,4.4vw,70px)}
+.cartel.trio{grid-column:span 12;display:grid;grid-template-columns:1.1fr 1fr;align-items:end;gap:20px;padding-bottom:6px}
+.cartel.trio .grande{font-size:clamp(64px,9vw,140px);padding:30px 26px 18px}
+.cartel.trio .txt{padding:26px 26px 30px}
+.cartel.trio p{font-size:18px;max-width:26em}
+@media (max-width:720px){.cartel.trio{display:flex;flex-direction:column;align-items:stretch}.cartel.trio .grande{font-size:clamp(46px,14vw,70px);padding:26px 22px 0}.cartel.trio .txt{padding:6px 20px 22px}.cartel.trio p{font-size:15.5px}}
+.cartel.letra .mascara{width:46%;margin:16px auto 0;color:var(--tinta)}
+.c1{--bg:var(--rosa);--r:-1.2deg}.c2{--bg:var(--amarillo);--r:1deg}.c3{--bg:var(--crema);--r:-.6deg}
+.c4{--bg:var(--turquesa);--r:.8deg}.c5{--bg:var(--azul);--fg:var(--crema);--r:-1deg}.c6{--bg:var(--rojo);--fg:var(--crema);--r:1.2deg}
+.c7{--bg:var(--lila);--r:-.8deg}
+.c5 .mascara,.c6 .mascara{color:var(--crema)}
+.mas-menu{max-width:1240px;margin:clamp(30px,4vw,48px) auto 0;padding:0 var(--gut);display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.mas-menu p{margin:0 12px 0 0;opacity:.8}
+@media (max-width:1000px){.cartel{grid-column:span 6}.cartel.ancho{grid-column:span 12}}
+@media (max-width:720px){
+  .carteles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:6px var(--gut) 22px;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .carteles::-webkit-scrollbar{display:none}
+  .cartel,.cartel.ancho{flex:0 0 80%;scroll-snap-align:center}
+  .cartel.ancho .marco{aspect-ratio:4/4.4}
+  .cartel:hover{transform:rotate(var(--r,0deg))}
+}
+.puntos{display:none;justify-content:center;gap:8px;margin-top:4px}
+.puntos i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s,width .3s}
+.puntos i.on{background:var(--rosa);width:22px;border-radius:5px}
+@media (max-width:720px){.puntos{display:flex}}
+
+/* ============ Almuerzo ============ */
+.almuerzo{background:var(--lila);color:var(--tinta);padding:clamp(90px,10vw,140px) 0;overflow:hidden}
+.almuerzo .talavera{position:absolute;inset:0;opacity:.18;pointer-events:none}
+.pizarra{position:relative;max-width:1100px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,80px);align-items:start}
+.pizarra .lado .titulo{font-size:clamp(52px,5.2vw,84px)}
+.pizarra .lado .titulo .script{color:var(--crema)}
+.hora{display:inline-block;margin-top:20px;background:var(--tinta);color:var(--lila);font-family:var(--f-poster);font-size:clamp(26px,2.6vw,36px);padding:10px 18px 8px;border-radius:12px;transform:rotate(-2deg);white-space:nowrap}
+.platos{list-style:none;margin:0;padding:0;background:var(--crema);border-radius:26px;box-shadow:0 10px 0 var(--tinta);overflow:hidden}
+.platos li{display:grid;grid-template-columns:1fr auto;gap:4px 18px;padding:20px clamp(18px,2.6vw,30px);border-bottom:2px dashed rgba(26,18,22,.2)}
+.platos li:last-child{border-bottom:0}
+.platos h3{margin:0;font-size:clamp(26px,2.6vw,34px)}
+.platos .p{font-family:var(--f-poster);font-size:clamp(26px,2.6vw,34px);color:var(--rosa);-webkit-text-stroke:1px var(--tinta)}
+.platos p{grid-column:1/-1;margin:0;font-size:15px;line-height:1.45;opacity:.82;max-width:36em}
+.platos li.beb{background:var(--tinta);color:var(--crema)}
+.platos li.beb .p{color:var(--amarillo);-webkit-text-stroke:0}
+@media (max-width:860px){.pizarra{grid-template-columns:1fr}}
+
+/* ============ Cantina ============ */
+.cantina{background:#2A0B14;padding:clamp(90px,11vw,160px) 0;overflow:hidden;isolation:isolate}
+.cantina::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 30% 40%,rgba(255,61,139,.22),transparent 70%);z-index:-1}
+.cantina .grid{max-width:1240px;margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(30px,5vw,80px);align-items:center}
+.salud{margin:0;font-size:clamp(76px,10vw,170px);line-height:.85;color:#FFE6F1;opacity:.18;transition:opacity .2s}
+.salud .s2{display:block;font-size:.62em;color:#FFF3B8}
+.salud.on{opacity:1;text-shadow:0 0 .015em #fff,0 0 .06em var(--rosa),0 0 .16em var(--rosa),0 0 .4em rgba(255,61,139,.5);animation:prende 1s steps(1)}
+.salud.on .s2{text-shadow:0 0 .03em #fff,0 0 .12em var(--amarillo),0 0 .3em rgba(255,210,31,.5)}
+.cantina .bajada{color:#F3D9E5}
+.tragos{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.trago{display:flex;align-items:baseline;gap:12px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 18px}
+.trago .poster{font-size:24px}
+.trago .p{font-family:var(--f-poster);font-size:24px;color:var(--amarillo)}
+.copa{position:relative;border-radius:200px 200px 26px 26px;overflow:hidden;box-shadow:0 0 0 6px var(--rosa),0 0 60px 10px rgba(255,61,139,.35);max-width:440px;justify-self:center}
+.copa img{width:100%;aspect-ratio:460/548;object-fit:cover}
+@media (max-width:860px){.cantina .grid{grid-template-columns:1fr}.copa{max-width:330px;order:-1}}
+
+/* ============ La mesa + reseñas ============ */
+.mesa{background:var(--crema);color:var(--tinta);padding:clamp(90px,10vw,140px) 0}
+.mesa .titulo .script{color:var(--rosa)}
+.numeros{max-width:1240px;margin:clamp(30px,4vw,56px) auto 0;padding:0 var(--gut);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,24px)}
+.num{background:#fff;border-radius:22px;padding:24px;box-shadow:inset 0 0 0 2px var(--tinta),0 6px 0 var(--tinta)}
+.num .poster{font-size:clamp(54px,6vw,84px);display:flex;align-items:baseline;gap:8px}
+.num .poster small{font-size:.42em;color:var(--rosa)}
+.num p{margin:6px 0 0;font-weight:600}
+.mosaico{max-width:1240px;margin:clamp(30px,4vw,56px) auto 0;padding:0 var(--gut);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+.mosaico figure{margin:0;border-radius:18px;overflow:hidden;background:#e9dccb}
+.mosaico img{width:100%;height:100%;object-fit:cover;aspect-ratio:460/548}
+.mosaico figure:nth-child(2),.mosaico figure:nth-child(4){transform:translateY(clamp(20px,4vw,56px))}
+@media (max-width:720px){
+  .numeros{grid-template-columns:1fr}
+  .mosaico{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mosaico figure:nth-child(4){transform:none}
+  .mosaico figure:nth-child(3){transform:translateY(clamp(20px,4vw,56px))}
+}
+
+/* ============ Pie ============ */
+.pie{background:var(--rosa);color:var(--tinta);padding:clamp(90px,10vw,140px) 0 calc(40px + env(safe-area-inset-bottom));overflow:hidden}
+.pie .grande{margin:0;font-size:clamp(52px,11vw,170px);line-height:.86}
+.pie .grande .script{display:block;font-size:.5em;color:var(--crema);text-shadow:0 3px 0 var(--tinta)}
+.sedes{max-width:1240px;margin:clamp(40px,5vw,64px) auto 0;padding:0 var(--gut);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.sede{background:var(--tinta);color:var(--crema);border-radius:20px;padding:20px;text-decoration:none;display:flex;flex-direction:column;gap:4px;transition:transform .3s var(--spring)}
+.sede:hover{transform:translateY(-4px) rotate(-.6deg)}
+.sede .poster{font-size:30px}
+.sede span{font-size:15px;opacity:.85}
+.sede b{margin-top:8px;font-size:17px;color:var(--amarillo)}
+.redes{max-width:1240px;margin:36px auto 0;padding:0 var(--gut);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.redes .fila{display:flex;gap:10px;flex-wrap:wrap}
+.credito{font-size:13.5px;font-weight:700}
+.credito a{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){.sedes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.sedes{grid-template-columns:1fr}}
+
+/* ============ Barra fija (teléfono) ============ */
+.barra{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:25;display:none;gap:8px;padding:8px;border-radius:22px;
+  background:rgba(20,12,17,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 16px 40px -10px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.08);
+  transform:translateY(140%);transition:transform .5s var(--ease)}
+.barra.ver{transform:none}
+.barra a,.barra button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;border-radius:16px;border:0;cursor:pointer;text-decoration:none;font-weight:800;font-size:14px;background:rgba(255,255,255,.08);color:var(--crema)}
+.barra .prin{background:var(--rosa);color:var(--tinta)}
+.barra small{font-weight:700;font-size:11px;opacity:.75}
+.barra svg{width:20px;height:20px}
+@media (max-width:720px){.barra{display:flex}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  .neon .w,.neon .de{opacity:1}
+  .rev{opacity:1;transform:none}
+  .cinta .pista{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="proto" role="note"><b>Prototipo de En El Mapa</b> para Cinco de Maya</div>
+
+<header class="cab" id="cab">
+  <a class="marca poster" href="#inicio" aria-label="Cinco de Maya, inicio">Cinco <span class="script">de</span> Maya</a>
+  <span class="esp"></span>
+  <a class="lnk" href="#cartelera">Menú</a>
+  <a class="lnk" href="#cantina">Cantina</a>
+  <button class="pildora" id="pildora" type="button" aria-controls="locales"><span class="pt" id="pildora-pt"></span><span id="pildora-t">Elige tu local</span></button>
+</header>
+
+<main>
+<!-- ============ Portada ============ -->
+<section class="hero" id="inicio" aria-label="Cinco de Maya">
+  <div class="talavera" aria-hidden="true"></div>
+  <figure class="foto f1" data-v="-0.12" aria-hidden="true"><img src="img/fajitas.webp" width="460" height="548" alt="" fetchpriority="high"></figure>
+  <figure class="foto f2" data-v="-0.22" aria-hidden="true"><img src="img/margarita.webp" width="460" height="548" alt=""></figure>
+  <figure class="foto f3" data-v="-0.3" aria-hidden="true"><img src="img/birria.webp" width="460" height="536" alt=""></figure>
+  <figure class="foto f4" data-v="-0.18" aria-hidden="true"><img src="img/tostada.webp" width="460" height="548" alt=""></figure>
+  <div class="hero-c">
+    <h1 class="neon poster"><span class="w">Cinco</span> <span class="de script">de</span> <span class="w b">Maya</span></h1>
+    <p class="sub">Cocina mexicana y cantina en <b>Mayagüez</b>, <b>Aguadilla</b> y <b>Ponce</b>. Guaynabo, muy pronto.</p>
+    <div class="acciones">
+      <a class="btn rosa" href="#locales" data-ir="locales"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s7-6.6 7-12.2A7 7 0 0 0 5 9.8C5 15.4 12 22 12 22z"/><circle cx="12" cy="9.6" r="2.6" fill="#FF3D8B"/></svg>Elige tu local</a>
+      <a class="btn linea" href="#cartelera" data-ir="cartelera">Ver el menú</a>
+    </div>
+  </div>
+  <div class="cinta" id="cinta" aria-hidden="true"><div class="pista">
+    <span>Tacos de birria<i></i>Fajitas<i></i>Queso fundido<i></i>Margaritas<i></i>Mezcalitas<i></i>Elote<i></i>Quesadillas<i></i>Tacos al pastor<i></i></span>
+    <span>Tacos de birria<i></i>Fajitas<i></i>Queso fundido<i></i>Margaritas<i></i>Mezcalitas<i></i>Elote<i></i>Quesadillas<i></i>Tacos al pastor<i></i></span>
+  </div></div>
+</section>
+
+<!-- ============ Elige tu esquina ============ -->
+<section class="locales" id="locales" aria-labelledby="t-loc">
+  <div class="talavera" aria-hidden="true"></div>
+  <div class="sec-cab">
+    <span class="eti">Tres locales y uno que viene</span>
+    <h2 class="titulo poster" id="t-loc">Elige tu <span class="script">esquina</span></h2>
+    <p class="bajada">Toca una esquina del ring y te decimos si está abierto, cómo llegar y a qué número llamar.</p>
+  </div>
+  <div class="arena">
+    <div class="ring" id="ring">
+      <svg class="lona" viewBox="0 0 400 400" aria-hidden="true">
+        <rect x="40" y="40" width="320" height="320" rx="10" fill="#1A1216"/>
+        <rect x="54" y="54" width="292" height="292" rx="4" fill="#FFF4E4"/>
+        <rect x="54" y="54" width="292" height="292" rx="4" fill="none" stroke="#1A1216" stroke-width="2" stroke-dasharray="2 8" opacity=".25" transform="translate(14 14) scale(.93)"/>
+        <!-- cuerdas: verde, blanca, roja -->
+        <g class="cuerda c-arr" stroke-linecap="round"><line x1="62" y1="52" x2="338" y2="52" stroke="#1E9E55" stroke-width="5"/><line x1="62" y1="60" x2="338" y2="60" stroke="#fff" stroke-width="5"/><line x1="62" y1="68" x2="338" y2="68" stroke="#E5322B" stroke-width="5"/></g>
+        <g class="cuerda c-aba" stroke-linecap="round"><line x1="62" y1="348" x2="338" y2="348" stroke="#1E9E55" stroke-width="5"/><line x1="62" y1="340" x2="338" y2="340" stroke="#fff" stroke-width="5"/><line x1="62" y1="332" x2="338" y2="332" stroke="#E5322B" stroke-width="5"/></g>
+        <g class="cuerda c-izq" stroke-linecap="round"><line x1="52" y1="62" x2="52" y2="338" stroke="#1E9E55" stroke-width="5"/><line x1="60" y1="62" x2="60" y2="338" stroke="#fff" stroke-width="5"/><line x1="68" y1="62" x2="68" y2="338" stroke="#E5322B" stroke-width="5"/></g>
+        <g class="cuerda c-der" stroke-linecap="round"><line x1="348" y1="62" x2="348" y2="338" stroke="#1E9E55" stroke-width="5"/><line x1="340" y1="62" x2="340" y2="338" stroke="#fff" stroke-width="5"/><line x1="332" y1="62" x2="332" y2="338" stroke="#E5322B" stroke-width="5"/></g>
+        <circle cx="200" cy="200" r="86" fill="none" stroke="#FF3D8B" stroke-width="3" stroke-dasharray="6 9" opacity=".7"/>
+      </svg>
+      <div class="centro" aria-live="polite">
+        <svg viewBox="0 0 100 110" aria-hidden="true" id="mascara-centro">
+          <path d="M50 4C24 4 10 26 10 52c0 30 18 54 40 54s40-24 40-54C90 26 76 4 50 4z" fill="#FF3D8B" stroke="#1A1216" stroke-width="4"/>
+          <path d="M50 6c-5 10-5 22 0 34c5-12 5-24 0-34z" fill="#FFD21F" stroke="#1A1216" stroke-width="3"/>
+          <path d="M18 50c6-12 20-14 28-6c-2 10-12 16-24 14c-3-2-5-5-4-8zM82 50c-6-12-20-14-28-6c2 10 12 16 24 14c3-2 5-5 4-8z" fill="#FFF4E4" stroke="#1A1216" stroke-width="3"/>
+          <ellipse cx="34" cy="51" rx="7" ry="5" fill="#1A1216"/><ellipse cx="66" cy="51" rx="7" ry="5" fill="#1A1216"/>
+          <path d="M34 80c10 8 22 8 32 0c-4 10-10 14-16 14s-12-4-16-14z" fill="#1A1216"/>
+          <path d="M14 66c4 10 10 16 16 20M86 66c-4 10-10 16-16 20" fill="none" stroke="#1A1216" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="nom poster" id="centro-nom">¿Dónde?</div>
+        <div class="ind" id="centro-ind">Toca una esquina</div>
+      </div>
+      <button class="esq ag" type="button" data-l="aguadilla" aria-pressed="false"><span class="poste" aria-hidden="true"></span><span class="rot">Aguadilla</span></button>
+      <button class="esq gy" type="button" data-l="guaynabo" aria-pressed="false"><span class="poste" aria-hidden="true"></span><span class="rot">Guaynabo<small>Pronto</small></span></button>
+      <button class="esq my" type="button" data-l="mayaguez" aria-pressed="false"><span class="poste" aria-hidden="true"></span><span class="rot">Mayagüez</span></button>
+      <button class="esq po" type="button" data-l="ponce" aria-pressed="false"><span class="poste" aria-hidden="true"></span><span class="rot">Ponce</span></button>
+    </div>
+
+    <div class="ficha" id="ficha" aria-live="polite">
+      <div class="vacia">
+        <div class="poster">Cada esquina, su horario</div>
+        <p>Mayagüez, Aguadilla y Ponce tienen teléfono y horario propios. Escoge una esquina y lo tienes todo aquí.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Cartelera ============ -->
+<section class="cartelera" id="cartelera" aria-labelledby="t-car">
+  <div class="sec-cab">
+    <span class="eti" style="color:var(--rosa)">Cartelera estelar</span>
+    <h2 class="titulo poster" id="t-car">Los que <span class="script">siempre</span> ganan</h2>
+  </div>
+  <div class="carteles" id="carteles">
+    <article class="cartel c1 ancho rev">
+      <div class="marco"><img src="img/fajitas.webp" width="460" height="548" alt="Fajitas de carnita servidas en sartén de hierro con cebolla, pimientos y limón" loading="lazy"></div>
+      <div class="txt"><span class="eti">Pelea estelar</span><h3 class="poster">Fajitas de Carnita</h3></div>
+    </article>
+    <article class="cartel c2 rev">
+      <div class="marco"><img src="img/birria.webp" width="460" height="536" alt="Taco de birria mojado en su consomé" loading="lazy"></div>
+      <div class="txt"><span class="eti">Campeón de la casa</span><h3 class="poster">Tacos de Birria</h3></div>
+    </article>
+    <article class="cartel c5 letra rev">
+      <div class="grande poster">Burrito El Luchador</div>
+      <svg class="mascara" viewBox="0 0 100 110" aria-hidden="true"><path d="M50 4C24 4 10 26 10 52c0 30 18 54 40 54s40-24 40-54C90 26 76 4 50 4z" fill="none" stroke="currentColor" stroke-width="4"/><path d="M50 6c-5 10-5 22 0 34c5-12 5-24 0-34z" fill="currentColor"/><path d="M18 50c6-12 20-14 28-6c-2 10-12 16-24 14c-3-2-5-5-4-8zM82 50c-6-12-20-14-28-6c2 10 12 16 24 14c3-2 5-5 4-8z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M34 80c10 8 22 8 32 0c-4 10-10 14-16 14s-12-4-16-14z" fill="currentColor"/></svg>
+      <div class="txt"><span class="eti">Peso completo</span><p class="poster" style="font-size:40px;margin:4px 0 0;color:var(--amarillo)">$18.99</p></div>
+    </article>
+    <article class="cartel c3 rev">
+      <div class="marco"><img src="img/nachos.webp" width="460" height="548" alt="Nachos con salsa de queso, crema y pico de gallo" loading="lazy"></div>
+      <div class="txt"><span class="eti">Para compartir</span><h3 class="poster">Nachos</h3></div>
+    </article>
+    <article class="cartel c4 rev">
+      <div class="marco"><img src="img/quesadilla.webp" width="460" height="536" alt="Quesadillas con totopos, salsa verde y pico de gallo" loading="lazy"></div>
+      <div class="txt"><span class="eti">Clásico</span><h3 class="poster">Quesadillas</h3></div>
+    </article>
+    <article class="cartel c6 letra trio rev">
+      <div class="grande poster">Fajita Trío</div>
+      <div class="txt"><span class="eti">Lucha en parejas</span><p>Camarones, carne asada y pechuga a la parrilla. 8 plantillas y sus sides.</p><p class="poster" style="font-size:40px;margin:10px 0 0;color:var(--amarillo)">$56.99</p></div>
+    </article>
+  </div>
+  <div class="puntos" id="puntos" aria-hidden="true"></div>
+  <div class="mas-menu">
+    <p>Tacos, burritos, fajitas, bowls y más.</p>
+    <a class="btn amarillo" href="https://www.instagram.com/cincodemayapuertorico/" target="_blank" rel="noopener">Ver el menú completo</a>
+    <a class="btn linea" id="pedir-car" href="https://www.doordash.com/store/cinco-de-maya-mayag%C3%BCez-24457127/" target="_blank" rel="noopener">Pedir para llevar</a>
+  </div>
+</section>
+
+<!-- ============ Almuerzo ============ -->
+<section class="almuerzo" id="almuerzo" aria-labelledby="t-alm">
+  <div class="talavera" aria-hidden="true"></div>
+  <div class="pizarra">
+    <div class="lado rev">
+      <span class="eti">Para el break</span>
+      <h2 class="titulo poster" id="t-alm">Especiales de <span class="script">almuerzo</span></h2>
+      <div class="hora">11:30 AM a 2:00 PM</div>
+    </div>
+    <ul class="platos rev">
+      <li><h3 class="poster">Nacho Libre</h3><span class="p">10.99</span><p>Totopos, salsa de queso verde hecha en casa, crema y pico de gallo. Escoge pollo, carnitas o al pastor.</p></li>
+      <li><h3 class="poster">Pechuga a la Mexicana</h3><span class="p">10.99</span><p>Arroz mexicano hecho en casa, pechuga de pollo con crema, pico de gallo y aguacate.</p></li>
+      <li><h3 class="poster">Carnita Bowl</h3><span class="p">11.99</span><p>Arroz mexicano hecho en casa, bowl de carnitas y aguacate.</p></li>
+      <li><h3 class="poster">Aguacate Relleno</h3><span class="p">12.99</span><p>Aguacate relleno de pollo, carnita, pastor o birria, con cebolla, cilantro, queso y pico de gallo.</p></li>
+      <li><h3 class="poster">Luchador de Pollo</h3><span class="p">10.99</span><p>Burrito con arroz mexicano, pechuga, pico de gallo, queso Monterrey, salsa de queso verde y totopos con refrito. Carnita o pastor +$2.</p></li>
+      <li class="beb"><h3 class="poster">Coronas y Modelos</h3><span class="p">2 x $6</span></li>
+      <li class="beb"><h3 class="poster">Margarita original</h3><span class="p">$5.50</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ Cantina ============ -->
+<section class="cantina" id="cantina" aria-labelledby="t-can">
+  <div class="grid">
+    <div>
+      <span class="eti" style="color:var(--rosa)">La cantina</span>
+      <h2 class="salud poster" id="t-can">¡Salud! <span class="s2 script">carnal</span></h2>
+      <p class="bajada rev">Margaritas y mezcalitas para acompañar los tacos, el queso fundido y la sobremesa.</p>
+      <div class="tragos rev">
+        <div class="trago"><span class="poster">Margaritas</span></div>
+        <div class="trago"><span class="poster">Mezcalitas</span></div>
+        <div class="trago"><span class="poster">Coronas y Modelos</span><span class="p">2x$6</span></div>
+      </div>
+    </div>
+    <figure class="copa rev" style="margin:0"><img src="img/margarita.webp" width="460" height="548" alt="Margarita de fresa con escarchado de chile y limón" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ============ La mesa ============ -->
+<section class="mesa" id="mesa" aria-labelledby="t-mesa">
+  <div class="sec-cab">
+    <span class="eti" style="color:var(--rosa)">Lo que dice la gente</span>
+    <h2 class="titulo poster" id="t-mesa">La gente <span class="script">ya habló</span></h2>
+  </div>
+  <div class="numeros">
+    <div class="num rev"><div class="poster"><span data-cuenta="4.5" data-dec="1">4.5</span><small>★</small></div><p>806 reseñas en Google · Mayagüez</p></div>
+    <div class="num rev"><div class="poster"><span data-cuenta="4.6" data-dec="1">4.6</span><small>★</small></div><p>212 reseñas en Google · Aguadilla</p></div>
+    <div class="num rev"><div class="poster"><span data-cuenta="25" data-dec="0">25</span><small>mil</small></div><p>Siguiéndonos en Instagram</p></div>
+  </div>
+  <div class="mosaico">
+    <figure class="rev"><img src="img/tacos.webp" width="460" height="548" alt="Tacos con queso, cebolla encurtida y totopos" loading="lazy"></figure>
+    <figure class="rev"><img src="img/molcajete.webp" width="460" height="548" alt="Sopa servida en molcajete con totopos y limón" loading="lazy"></figure>
+    <figure class="rev"><img src="img/flautas.webp" width="460" height="548" alt="Flautas con guacamole, crema y pico de gallo" loading="lazy"></figure>
+    <figure class="rev"><img src="img/postre.webp" width="460" height="548" alt="Postre con helado" loading="lazy"></figure>
+  </div>
+</section>
+</main>
+
+<!-- ============ Pie ============ -->
+<footer class="pie" id="pie">
+  <div class="sec-cab">
+    <p class="grande poster">¡Te esperamos <span class="script">carnal!</span></p>
+  </div>
+  <div class="sedes">
+    <a class="sede" href="#locales" data-sede="mayaguez"><span class="poster">Mayagüez</span><span>75-81 Calle de la Candelaria</span><b>787-978-3007</b></a>
+    <a class="sede" href="#locales" data-sede="aguadilla"><span class="poster">Aguadilla</span><span>Aguadilla Town Center, PR-2</span><b>787-658-0033</b></a>
+    <a class="sede" href="#locales" data-sede="ponce"><span class="poster">Ponce</span><span>Av. Tito Castro</span><b>787-973-5352</b></a>
+    <a class="sede" href="#locales" data-sede="guaynabo"><span class="poster">Guaynabo</span><span>La cuarta esquina</span><b>Muy pronto</b></a>
+  </div>
+  <div class="redes">
+    <div class="fila">
+      <a class="btn oscuro" href="https://www.instagram.com/cincodemayapuertorico/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn linea" href="https://www.facebook.com/cincodemayapuertorico/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="credito">Prototipo diseñado por <a href="https://www.instagram.com/enelmapapr/" target="_blank" rel="noopener">En El Mapa</a></p>
+  </div>
+</footer>
+
+<nav class="barra" id="barra" aria-label="Acciones rápidas">
+  <a class="prin" id="b-tel" href="#locales"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span id="b-tel-t">Llamar</span></a>
+  <a id="b-mapa" href="#locales"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s7-6.6 7-12.2A7 7 0 0 0 5 9.8C5 15.4 12 22 12 22z"/></svg><span>Cómo llegar</span></a>
+  <button type="button" id="b-cambia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h13l-3-3M20 17H7l3 3"/></svg><span id="b-cambia-t">Elegir local</span></button>
+</nav>
+
+<script>
+(() => {
+'use strict';
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+/* ---------- Datos de cada local ---------- */
+const DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const TODOS = [0,1,2,3,4,5,6].map(() => [690, 1290]);           // 11:30 a.m. – 9:30 p.m. (minutos)
+const LOCALES = {
+  mayaguez: { nom:'Mayagüez', corto:'my', dir:'75-81 Calle de la Candelaria, Mayagüez', tel:'787-978-3007',
+    mapa:'https://www.google.com/maps/search/?api=1&query=Cinco+de+Maya+75-81+Calle+de+la+Candelaria+Mayag%C3%BCez',
+    pedir:'https://www.doordash.com/store/cinco-de-maya-mayag%C3%BCez-24457127/', horas: TODOS },
+  aguadilla:{ nom:'Aguadilla', corto:'ag', dir:'Aguadilla Town Center, PR-2, frente a Rooms to Go', tel:'787-658-0033',
+    mapa:'https://www.google.com/maps/search/?api=1&query=Cinco+de+Maya+Aguadilla', horas: TODOS },
+  ponce:    { nom:'Ponce', corto:'po', dir:'113 Av. Tito Castro, Ponce', tel:'787-973-5352',
+    mapa:'https://www.google.com/maps/search/?api=1&query=Cinco+de+Maya+Av.+Tito+Castro+Ponce',
+    horas: [[690,1290], null, null, [690,1290], [690,1290], [690,1290], [690,1290]] },
+  guaynabo: { nom:'Guaynabo', corto:'gy', pronto:true }
+};
+
+/* ---------- Hora de Puerto Rico ---------- */
+function ahoraPR() {
+  const p = new Intl.DateTimeFormat('en-US', { timeZone:'America/Puerto_Rico', weekday:'short', hour:'numeric', minute:'numeric', hour12:false }).formatToParts(new Date());
+  const g = (t) => (p.find(x => x.type === t) || {}).value;
+  const d = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday'));
+  return { d, m: (parseInt(g('hour'), 10) % 24) * 60 + parseInt(g('minute'), 10) };
+}
+const hora = (m) => { const h = Math.floor(m / 60), mm = m % 60, h12 = ((h + 11) % 12) + 1; return h12 + ':' + String(mm).padStart(2,'0') + (h < 12 ? ' a.m.' : ' p.m.'); };
+function estado(L) {
+  const { d, m } = ahoraPR(), hoy = L.horas[d];
+  if (hoy && m >= hoy[0] && m < hoy[1]) return { ab:true, txt:'Abierto ahora · hasta las ' + hora(hoy[1]) };
+  if (hoy && m < hoy[0]) return { ab:false, txt:'Cerrado · abre hoy a las ' + hora(hoy[0]) };
+  for (let i = 1; i <= 7; i++) { const dd = (d + i) % 7, h = L.horas[dd]; if (h) return { ab:false, txt:'Cerrado · abre ' + (i === 1 ? 'mañana' : 'el ' + DIAS[dd].toLowerCase()) + ' a las ' + hora(h[0]) }; }
+  return { ab:false, txt:'Cerrado' };
+}
+function lineasHorario(L) {
+  const { d } = ahoraPR();
+  const orden = [1,2,3,4,5,6,0];
+  const igual = orden.every(i => L.horas[i] && L.horas[i][0] === L.horas[1]?.[0] && L.horas[i][1] === L.horas[1]?.[1]);
+  if (igual) return `<li class="hoy"><span>Todos los días</span><span>${hora(L.horas[1][0])} – ${hora(L.horas[1][1])}</span></li>`;
+  // agrupa días seguidos con el mismo horario
+  const grupos = []; orden.forEach(i => { const h = L.horas[i], k = h ? h.join('-') : 'x', u = grupos[grupos.length - 1]; if (u && u.k === k) u.dias.push(i); else grupos.push({ k, h, dias:[i] }); });
+  return grupos.map(g => {
+    const n = g.dias.length > 1 ? DIAS[g.dias[0]] + ' a ' + DIAS[g.dias[g.dias.length - 1]].toLowerCase() : DIAS[g.dias[0]];
+    return `<li${g.dias.includes(d) ? ' class="hoy"' : ''}><span>${n}</span><span>${g.h ? hora(g.h[0]) + ' – ' + hora(g.h[1]) : 'Cerrado'}</span></li>`;
+  }).join('');
+}
+
+/* ---------- Iconos ---------- */
+const IC = {
+  tel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+  pin:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22s7-6.6 7-12.2A7 7 0 0 0 5 9.8C5 15.4 12 22 12 22z"/></svg>',
+  bolsa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
+  ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>'
+};
+
+/* ---------- Elegir local ---------- */
+const ring = $('#ring'), ficha = $('#ficha');
+let actual = null;
+function elegir(id, { anim = true, guardar = true } = {}) {
+  const L = LOCALES[id]; if (!L) return;
+  actual = id;
+  $$('.esq', ring).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.l === id)));
+  $('#centro-nom').textContent = L.nom;
+  if (anim && !reduce) {
+    ring.classList.remove('golpe','g-ag','g-gy','g-my','g-po'); void ring.offsetWidth;
+    ring.classList.add('golpe', 'g-' + L.corto);
+  }
+  let html;
+  if (L.pronto) {
+    $('#centro-ind').textContent = 'Muy pronto';
+    html = `<span class="eti">La cuarta esquina</span><h3 class="poster">Guaynabo</h3>
+      <div class="estado"><i></i>Muy pronto</div>
+      <p class="dir">Estamos preparando el próximo Cinco de Maya. La fecha de apertura sale primero en Instagram.</p>
+      <div class="botones"><a class="btn oscuro" href="https://www.instagram.com/cincodemayapuertorico/" target="_blank" rel="noopener">${IC.ig}Síguenos</a></div>`;
+  } else {
+    const e = estado(L);
+    $('#centro-ind').textContent = e.ab ? 'Abierto ahora' : 'Cerrado ahora';
+    html = `<span class="eti">Tu esquina</span><h3 class="poster">${L.nom}</h3>
+      <div class="estado ${e.ab ? 'ab' : 'ce'}"><i></i>${e.txt}</div>
+      <p class="dir">${L.dir}</p>
+      <ul class="horas">${lineasHorario(L)}</ul>
+      <div class="botones">
+        <a class="btn rosa tel" href="tel:+1${L.tel.replace(/-/g,'')}">${IC.tel}${L.tel}</a>
+        <a class="btn oscuro" href="${L.mapa}" target="_blank" rel="noopener">${IC.pin}Cómo llegar</a>
+        ${L.pedir ? `<a class="btn linea" href="${L.pedir}" target="_blank" rel="noopener">${IC.bolsa}Pedir para llevar</a>` : ''}
+      </div>`;
+  }
+  ficha.innerHTML = `<div class="${anim && !reduce ? 'anim' : ''}" style="display:flex;flex-direction:column;flex:1">${html}</div>`;
+  // cabecera y barra
+  const e = L.pronto ? null : estado(L);
+  $('#pildora-t').textContent = L.nom;
+  $('#pildora-pt').className = 'pt' + (e && e.ab ? ' ab' : '');
+  $('#b-cambia-t').textContent = L.nom;
+  const bt = $('#b-tel'), bm = $('#b-mapa');
+  if (L.pronto) { bt.href = '#locales'; $('#b-tel-t').textContent = 'Llamar'; bm.href = '#locales'; bm.removeAttribute('target'); }
+  else { bt.href = 'tel:+1' + L.tel.replace(/-/g, ''); $('#b-tel-t').textContent = 'Llamar'; bm.href = L.mapa; bm.target = '_blank'; bm.rel = 'noopener'; }
+  const pc = $('#pedir-car'); if (pc) pc.hidden = !!(L && !L.pedir);
+  if (guardar) { try { localStorage.setItem('cdm-local', id); } catch (e) {} try { history.replaceState(null, '', '#' + id); } catch (e) {} }
+}
+$$('.esq', ring).forEach(b => b.addEventListener('click', () => {
+  elegir(b.dataset.l);
+  if (innerWidth <= 900) {           // en teléfono, lleva la ficha a la vista
+    const r = ficha.getBoundingClientRect();
+    if (r.top > innerHeight * .55) irA(ficha, 90);
+  }
+}));
+// teclado: flechas entre esquinas
+ring.addEventListener('keydown', (ev) => {
+  const orden = ['aguadilla','guaynabo','ponce','mayaguez'];
+  const i = orden.indexOf(document.activeElement && document.activeElement.dataset.l);
+  if (i < 0) return;
+  if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); $(`.esq[data-l="${orden[(i + 1) % 4]}"]`).focus(); }
+  if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') { ev.preventDefault(); $(`.esq[data-l="${orden[(i + 3) % 4]}"]`).focus(); }
+});
+
+/* ---------- Desplazamiento suave hecho a mano ---------- */
+function irA(el, off = 70) {
+  const y0 = scrollY, y1 = Math.max(0, el.getBoundingClientRect().top + scrollY - off);
+  if (reduce) return scrollTo(0, y1);
+  const d = Math.min(1500, Math.max(700, Math.abs(y1 - y0) * .5)), t0 = performance.now();
+  const ease = (t) => t < .5 ? 8 * t ** 4 : 1 - (-2 * t + 2) ** 4 / 2;
+  const paso = (now) => { const t = Math.min(1, (now - t0) / d); scrollTo(0, y0 + (y1 - y0) * ease(t)); if (t < 1) requestAnimationFrame(paso); };
+  requestAnimationFrame(paso);
+}
+$$('[data-ir]').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); irA(document.getElementById(a.dataset.ir)); }));
+$('#pildora').addEventListener('click', () => irA($('#locales')));
+$('#b-cambia').addEventListener('click', () => irA($('#locales')));
+$$('[data-sede]').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); elegir(a.dataset.sede); irA($('#locales')); }));
+$$('#b-tel, #b-mapa').forEach(a => a.addEventListener('click', (e) => { if (a.getAttribute('href') === '#locales') { e.preventDefault(); irA($('#locales')); } }));
+
+/* ---------- Local inicial: #ponce en el link, o el último que escogió ---------- */
+(() => {
+  const h = location.hash.slice(1);
+  let id = LOCALES[h] ? h : null;
+  if (!id) { try { id = localStorage.getItem('cdm-local'); } catch (e) {} }
+  if (id && LOCALES[id]) elegir(id, { anim:false, guardar:false });
+  if (LOCALES[h]) addEventListener('load', () => setTimeout(() => irA($('#locales'), 70), 250));
+})();
+// el estado (abierto / cerrado) se refresca cada minuto
+setInterval(() => { if (actual && !LOCALES[actual].pronto) elegir(actual, { anim:false, guardar:false }); }, 60000);
+
+/* ---------- Apariciones ---------- */
+const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin:'0px 0px -8% 0px', threshold:.12 });
+$$('.rev').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 80 + 'ms'; io.observe(el); });
+
+// Neón de la cantina: se prende al entrar
+const salud = $('.salud');
+new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) salud.classList.add('on'); }), { threshold:.5 }).observe(salud);
+
+// Números que cuentan
+const ioN = new IntersectionObserver((es) => es.forEach(e => {
+  if (!e.isIntersecting) return; ioN.unobserve(e.target);
+  const el = e.target, fin = parseFloat(el.dataset.cuenta), dec = +el.dataset.dec, t0 = performance.now(), D = 1200;
+  if (reduce) return;
+  const f = (now) => { const t = Math.min(1, (now - t0) / D), v = fin * (1 - (1 - t) ** 3); el.textContent = v.toFixed(dec); if (t < 1) requestAnimationFrame(f); };
+  requestAnimationFrame(f);
+}), { threshold:.6 });
+$$('[data-cuenta]').forEach(el => ioN.observe(el));
+
+/* ---------- Portada: fotos con profundidad (solo mientras se ve) ---------- */
+const hero = $('#inicio'), fotos = $$('.foto', hero), cinta = $('#cinta');
+let heroVis = true, tick = false;
+new IntersectionObserver(([e]) => { heroVis = e.isIntersecting; cinta.classList.toggle('pausa', !heroVis); }).observe(hero);
+function parallax() {
+  tick = false; if (!heroVis || reduce) return;
+  const y = scrollY;
+  fotos.forEach(f => f.style.setProperty('--py', (y * parseFloat(f.dataset.v)).toFixed(1) + 'px'));
+}
+addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(parallax); } }, { passive:true });
+
+/* ---------- Cabecera y barra ---------- */
+const cab = $('#cab'), barra = $('#barra'), pie = $('#pie');
+let yPrev = scrollY, tc = false;
+function cabecera() {
+  tc = false;
+  const y = scrollY, h = hero.offsetHeight;
+  cab.classList.toggle('solida', y > 40);
+  cab.classList.toggle('oculta', y > h * .8 && y > yPrev + 4);
+  if (y < yPrev - 4) cab.classList.remove('oculta');
+  const finPie = pie.getBoundingClientRect().top < innerHeight * .7;
+  barra.classList.toggle('ver', y > h * .7 && !finPie);
+  yPrev = y;
+}
+addEventListener('scroll', () => { if (!tc) { tc = true; requestAnimationFrame(cabecera); } }, { passive:true });
+
+/* ---------- Cartelera en teléfono: puntitos ---------- */
+const car = $('#carteles'), pts = $('#puntos'), cards = $$('.cartel', car);
+cards.forEach(() => pts.appendChild(document.createElement('i')));
+function marcaPunto() {
+  if (car.scrollWidth <= car.clientWidth + 4) return;
+  const c = car.scrollLeft + car.clientWidth / 2;
+  let mejor = 0, dmin = Infinity;
+  cards.forEach((k, i) => { const d = Math.abs(k.offsetLeft + k.offsetWidth / 2 - c); if (d < dmin) { dmin = d; mejor = i; } });
+  $$('i', pts).forEach((p, i) => p.classList.toggle('on', i === mejor));
+}
+car.addEventListener('scroll', () => requestAnimationFrame(marcaPunto), { passive:true });
+marcaPunto();
+
+/* ---------- Arranque ---------- */
+requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('cargado')));
+})();
+</script>
+
+<!-- En El Mapa: estadísticas y aviso de propuesta -->
+<form name="enelmapa-estadisticas" data-netlify="true" netlify-honeypot="bot-field" hidden style="display:none" aria-hidden="true">
+  <input name="visita"><input name="visitante"><input name="nuevo"><input name="sitio"><input name="aparato">
+  <input name="vio"><input name="cerro"><input name="llamar"><input name="instagram"><input name="otra_propuesta"><input name="segundos">
+  <input name="bot-field">
+</form>
+<script src="enelmapa-aviso.js" defer data-estadisticas="netlify" data-sitio="cincodemaya"></script>
+</body>
+</html>
